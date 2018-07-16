@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Class_Paras</string>
+    <string name="succesMSg">Login Successfull!</string>
 </resources>
