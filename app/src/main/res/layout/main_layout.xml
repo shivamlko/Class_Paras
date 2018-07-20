@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00FF00"
@@ -63,6 +70,40 @@
         android:textColor="@color/white"
         android:textColorHint="#606060" />
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you graduate?" />
+    <EditText
+        android:id="@+id/college"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter college name"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textColorHint="#606060" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/female"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Female" />
+
+    <RadioButton
+        android:id="@+id/male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Male" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/button"
         android:layout_width="100dp"
@@ -73,3 +114,5 @@
         android:textColor="@color/white" />
 
 </LinearLayout>
+
+</ScrollView>

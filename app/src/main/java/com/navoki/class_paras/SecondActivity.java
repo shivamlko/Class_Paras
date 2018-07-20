@@ -21,6 +21,7 @@ public class SecondActivity extends AppCompatActivity {
         text = (TextView) findViewById(R.id.text);
 
         Intent intent=getIntent();
+
         if(intent!=null){
 
             String email=intent.getStringExtra("email");
@@ -34,6 +35,10 @@ public class SecondActivity extends AppCompatActivity {
             text.append(bundle.getString("strPin","N/A"));
 
             text.setTextColor(intent.getIntExtra("textColor", Color.RED));
+
+            String gender=bundle.getString("gender","Female");
+
+            text.append(gender);
 
 
         }

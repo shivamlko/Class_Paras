@@ -2,7 +2,6 @@ package com.navoki.class_paras;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,20 +13,31 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView text1, text2;
     Button button;
-    private EditText email;
+    private EditText edtEmail;
     private EditText pass;
     private EditText mobile;
     private EditText pincode;
 
     Context context;
+    private CheckBox checkBox;
+    private EditText college;
+    private RadioGroup radioGroup;
+
+    String gender;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,13 +48,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         text1 = findViewById(R.id.t1);
         text2 = findViewById(R.id.t2);
         button = findViewById(R.id.button);
-        email = (EditText) findViewById(R.id.email);
-        pass = (EditText) findViewById(R.id.pass);
-        mobile = (EditText) findViewById(R.id.mobile);
-        pincode = (EditText) findViewById(R.id.pincode);
+        edtEmail =   findViewById(R.id.email);
+        pass =   findViewById(R.id.pass);
+        mobile =  findViewById(R.id.mobile);
+        pincode = findViewById(R.id.pincode);
+
+        checkBox = findViewById(R.id.checkBox);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        college = (EditText) findViewById(R.id.college);
 
         context = MainActivity.this;
-
 
         text1.setText("hello world");
 
@@ -58,52 +72,96 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         pincode.setHint("Enter pin code");
 
-        InputFilter[] inputFilters={new InputFilter.LengthFilter(6)};
+        InputFilter[] inputFilters = {new InputFilter.LengthFilter(6)};
         pincode.setFilters(inputFilters);
 
         pincode.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.e("checkBox", "isGraduate "+isChecked);
+                if(isChecked){
+                    college.setVisibility(View.VISIBLE);
+                }
+                else
+                    college.setVisibility(View.GONE);
+
+            }
+        });
+
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Log.e("IDs", checkedId+" "+R.id.male+" "+R.id.female);
+                if(checkedId==R.id.male){
+                    gender="Male";
+                }
+                else
+                    gender="Female";
+
+            }
+        });
+
+
 
     }
 
     @Override
     public void onClick(View v) {
 
-        text1.setText(getString(R.string.succesMSg));
+    /*    text1.setText(getString(R.string.succesMSg));
         text1.setTextSize(getResources().getDimension(R.dimen.textSize2));
         button.setBackgroundColor(Color.MAGENTA);
         Toast.makeText(context, "Button Click", Toast.LENGTH_SHORT).show();
 
+[a-z][@][a-z][.][a-z]
 
-        String strEmail=email.getText().toString();
-        String strMobile=mobile.getText().toString();
-        String strPass=pass.getText().toString();
-        String strPin=pincode.getText().toString();
+*/
+        String strEmail = edtEmail.getText().toString();
+        String strMobile = mobile.getText().toString();
+        String strPass = pass.getText().toString();
+        String strPin = pincode.getText().toString();
 
-        Log.e("MainActivity",strEmail);
-        Log.e("MainActivity",strPass+" "+strMobile);
+        boolean isGraduate=checkBox.isChecked();
 
-        if(!TextUtils.isEmpty(strEmail)) { // null ""
+        Log.e("MainActivity", strEmail);
+        Log.e("MainActivity", strPass + " " + strMobile);
+        Log.e("MainActivity", "isGraduate "+isGraduate);
 
-            if(!TextUtils.isEmpty(strMobile) && strMobile.length()==10){
-                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("email",strEmail);
-                intent.putExtra("mobile",strMobile);
-                intent.putExtra("pass",strPass);
-                intent.putExtra("textColor",Color.BLUE);
+        String phonePattern="[9][0-9]";
 
-                Bundle bundle=new Bundle();
-                bundle.putString("strPin",strPin);
 
-                intent.putExtra("bundle",bundle);
 
-                startActivity(intent);
-                finish();
-            }
-            else
+        if (!TextUtils.isEmpty(strEmail)) { // null ""
+
+            if (!TextUtils.isEmpty(strMobile) && strMobile.length() == 10) {
+                if(!TextUtils.isEmpty(gender)) {
+
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    intent.putExtra("email", strEmail);
+                    intent.putExtra("mobile", strMobile);
+                    intent.putExtra("pass", strPass);
+                    intent.putExtra("textColor", Color.BLUE);
+                    intent.putExtra("graduate", isGraduate);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("strPin", strPin);
+                    bundle.putString("gender", gender);
+
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                    Toast.makeText(context, "Select gender", Toast.LENGTH_SHORT).show();
+
+            } else
                 Toast.makeText(context, "Enter valid mobile", Toast.LENGTH_SHORT).show();
-        }
-        else
-            Toast.makeText(context, "Enter valid email", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(context, "Enter valid edtEmail", Toast.LENGTH_SHORT).show();
 
     }
 }
