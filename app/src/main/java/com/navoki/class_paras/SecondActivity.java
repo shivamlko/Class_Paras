@@ -5,12 +5,21 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class SecondActivity extends AppCompatActivity {
 
     private TextView text;
+    private Spinner spinner2;
+    private ListView listView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,28 +29,51 @@ public class SecondActivity extends AppCompatActivity {
 
         text = (TextView) findViewById(R.id.text);
 
-        Intent intent=getIntent();
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
 
-        if(intent!=null){
+        listView = (ListView) findViewById(R.id.list);
 
-            String email=intent.getStringExtra("email");
+        Intent intent = getIntent();
+
+        if (intent != null) {
+
+            String email = intent.getStringExtra("email") == null ? "N/A" : intent.getStringExtra("email");
 
             text.setText(email);
             text.append("\n");
-            text.append(intent.getStringExtra("mobile"));
+            text.append(intent.getStringExtra("mobile") == null ? "N/A" : intent.getStringExtra("mobile"));
 
-            Bundle bundle=intent.getBundleExtra("bundle");
-            text.append("\n");
-            text.append(bundle.getString("strPin","N/A"));
+            Bundle bundle = intent.getBundleExtra("bundle");
+            if (bundle != null) {
+                text.append("\n");
+                text.append(bundle.getString("strPin", "N/A"));
 
-            text.setTextColor(intent.getIntExtra("textColor", Color.RED));
+                text.setTextColor(intent.getIntExtra("textColor", Color.RED));
 
-            String gender=bundle.getString("gender","Female");
+                String gender = bundle.getString("gender", "Female");
 
-            text.append(gender);
+                text.append(gender);
+            }
 
 
         }
 
+
+        String[] arr=getResources().getStringArray(R.array.contries);
+
+        ArrayList<String> list=new ArrayList<>(Arrays.asList(arr));
+
+     //   Collections.shuffle(list);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(SecondActivity.this,R.layout.item_spinner,R.id.textView,list);
+        spinner2.setAdapter(adapter);
+
+
+        MyAdapter myAdapter=new MyAdapter(SecondActivity.this,R.layout.item_spinner,list);
+        listView.setAdapter(myAdapter);
+
     }
+
+
+
 }

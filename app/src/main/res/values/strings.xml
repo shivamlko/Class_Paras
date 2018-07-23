@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">Class_Paras</string>
     <string name="succesMSg">Login Successfull!</string>
+
+
+
+    <string-array name="contries">
+        <item>Select country</item>
+        <item>INDIA</item>
+        <item>CANADA</item>
+        <item>AUSTRALIA</item>
+        <item>AMERICA</item>
+        <item>SRI LANKA</item>
+        <item>INDIA2</item>
+        <item>CANADA2</item>
+        <item>AUSTRALIA2</item>
+        <item>AMERICA2</item>
+        <item>SRI LANKA2</item>
+        <item>INDIA3</item>
+        <item>CANADA4</item>
+        <item>AUSTRALIA5</item>
+        <item>AMERICA6</item>
+        <item>SRI LANKA7</item>
+    </string-array>
 </resources>
