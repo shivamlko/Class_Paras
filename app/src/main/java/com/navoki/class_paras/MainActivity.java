@@ -131,11 +131,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.e("MainActivity", strPass + " " + strMobile);
         Log.e("MainActivity", "isGraduate "+isGraduate);
 
-        String phonePattern="[9][0-9]";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
 
-        if (!TextUtils.isEmpty(strEmail)) { // null ""
+        if (!TextUtils.isEmpty(strEmail) && strEmail.matches(emailPattern)) { // null ""
 
             if (!TextUtils.isEmpty(strMobile) && strMobile.length() == 10) {
                 if(!TextUtils.isEmpty(gender)) {
