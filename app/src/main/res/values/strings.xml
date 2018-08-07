@@ -3,7 +3,6 @@
     <string name="succesMSg">Login Successfull!</string>
 
 
-
     <string-array name="contries">
         <item>Select country</item>
         <item>INDIA</item>

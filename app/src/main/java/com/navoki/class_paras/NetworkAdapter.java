@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class CustomeAdapter extends ArrayAdapter {
+public class NetworkAdapter extends ArrayAdapter {
 
 
     List<Student> list2;
     Context context;
 
-    public CustomeAdapter(@NonNull Context context, int resource, List<Student> list) {
+    public NetworkAdapter(@NonNull Context context, int resource, List<Student> list) {
         super(context, resource);
          list2=list;
          this.context=context;
