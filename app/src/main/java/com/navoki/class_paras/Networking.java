@@ -53,6 +53,8 @@ public class Networking extends AppCompatActivity {
 
 
     class Task extends AsyncTask<String, String, String> {
+
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -62,7 +64,14 @@ public class Networking extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String str = getResponse();
+            onProgressUpdate("10");
             return str;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+
         }
 
         @Override
