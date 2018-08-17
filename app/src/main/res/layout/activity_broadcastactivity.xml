@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".Broadcastactivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:textColor="#000"
+        android:text="Battery:"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

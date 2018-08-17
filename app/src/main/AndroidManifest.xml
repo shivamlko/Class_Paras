@@ -18,7 +18,6 @@
         <activity android:name=".SecondActivity"></activity>
 
         <activity android:name=".Networking">
-
         </activity>
         <activity android:name=".Broadcastactivity">
             <intent-filter>
@@ -26,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <service android:name=".MyServices"/>
     </application>
 
 </manifest>
