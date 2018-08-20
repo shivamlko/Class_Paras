@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Storage">
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter name" />
+
+    <Button
+        android:id="@+id/shared"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SHARED PREFF" />
+
+    <EditText
+        android:id="@+id/edtname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter name" />
+
+    <EditText
+        android:id="@+id/edtSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Subject" />
+
+
+    <Button
+        android:id="@+id/sqlinsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SQLITE INSERT" />
+    <Button
+        android:id="@+id/select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SQLITE SELECT" />
+
+
+</LinearLayout>

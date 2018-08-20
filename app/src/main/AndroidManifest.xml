@@ -14,20 +14,21 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity android:name=".SecondActivity"></activity>
-
-        <activity android:name=".Networking">
-        </activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".Networking"></activity>
         <activity android:name=".Broadcastactivity">
+
+        </activity>
+
+        <service android:name=".MyServices" />
+
+        <activity android:name=".Storage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <service android:name=".MyServices"/>
     </application>
 
 </manifest>
