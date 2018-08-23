@@ -15,14 +15,15 @@
             android:name=".MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".Networking"></activity>
-        <activity android:name=".Broadcastactivity">
-
-        </activity>
+        <activity android:name=".Networking" />
+        <activity android:name=".Broadcastactivity"></activity>
 
         <service android:name=".MyServices" />
 
         <activity android:name=".Storage">
+
+        </activity>
+        <activity android:name=".FragmentsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
